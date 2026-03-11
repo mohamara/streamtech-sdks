@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "streamtech/video-player",
+	"version": "1.0.0",
+	"title": "StreamTech Player",
+	"category": "embed",
+	"icon": "video-alt3",
+	"description": "Embed a StreamTech video player.",
+	"keywords": [ "video", "stream", "hls", "player", "streamtech" ],
+	"attributes": {
+		"assetId": {
+			"type": "string",
+			"default": ""
+		},
+		"width": {
+			"type": "string",
+			"default": "100%"
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		},
+		"muted": {
+			"type": "boolean",
+			"default": false
+		},
+		"controls": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"textdomain": "streamtech"
+}

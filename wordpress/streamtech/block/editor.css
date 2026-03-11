@@ -1,0 +1,33 @@
+/* StreamTech block editor styles */
+
+.streamtech-block-preview {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	padding: 20px;
+	background: #f0f0f1;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.streamtech-block-preview__icon .dashicons {
+	font-size: 36px;
+	width: 36px;
+	height: 36px;
+	color: #2271b1;
+}
+
+.streamtech-block-preview__info {
+	flex: 1;
+	min-width: 200px;
+}
+
+.streamtech-block-preview__info code {
+	font-size: 11px;
+	color: #646970;
+}
+
+.streamtech-block-preview .components-text-control__input {
+	margin-top: 8px;
+}

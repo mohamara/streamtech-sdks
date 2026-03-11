@@ -1,0 +1,79 @@
+/* ═══════════════════════════════════════════════════
+   StreamTech Front-end Player Styles
+   ═══════════════════════════════════════════════════ */
+
+.streamtech-player {
+	position: relative;
+	width: 100%;
+	background: #000;
+	border-radius: 6px;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.streamtech-player video {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+}
+
+/* ── Playlist ── */
+
+.streamtech-playlist {
+	background: #1a1a2e;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.streamtech-playlist video {
+	display: block;
+	width: 100%;
+	border-radius: 0;
+}
+
+.streamtech-playlist__tracks {
+	display: flex;
+	flex-direction: column;
+	max-height: 240px;
+	overflow-y: auto;
+	padding: 4px 0;
+}
+
+.streamtech-playlist__track {
+	display: block;
+	width: 100%;
+	padding: 10px 16px;
+	border: none;
+	background: transparent;
+	color: #e0e0e0;
+	text-align: left;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+.streamtech-playlist__track:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.streamtech-playlist__track--active {
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	font-weight: 600;
+}
+
+/* ── Scrollbar ── */
+
+.streamtech-playlist__tracks::-webkit-scrollbar {
+	width: 6px;
+}
+
+.streamtech-playlist__tracks::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.streamtech-playlist__tracks::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+}
