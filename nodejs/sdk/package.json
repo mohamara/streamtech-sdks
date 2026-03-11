@@ -1,0 +1,64 @@
+{
+  "name": "@streamtech/sdk",
+  "version": "1.0.0",
+  "description": "Node.js client SDK for StreamTech VOD infrastructure — upload, transcode, and stream video with ease.",
+  "author": "StreamTech",
+  "license": "MIT",
+  "homepage": "https://github.com/AvaPlus/streamtech-sdks/tree/main/nodejs/sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvaPlus/streamtech-sdks.git",
+    "directory": "nodejs/sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/AvaPlus/streamtech-sdks/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run test && npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "streamtech",
+    "vod",
+    "video",
+    "streaming",
+    "hls",
+    "dash",
+    "transcode",
+    "media",
+    "upload",
+    "video-on-demand",
+    "cdn"
+  ],
+  "dependencies": {
+    "axios": "^1.7.0",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^4.0.18"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
