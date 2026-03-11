@@ -1,7 +1,7 @@
 # @streamtech/sdk
 
 [![npm version](https://img.shields.io/npm/v/@streamtech/sdk.svg)](https://www.npmjs.com/package/@streamtech/sdk)
-[![license](https://img.shields.io/npm/l/@streamtech/sdk.svg)](https://github.com/AvaPlus/streamtech-sdks/blob/main/nodejs/sdk/LICENSE)
+[![license](https://img.shields.io/npm/l/@streamtech/sdk.svg)](https://github.com/mohamara/streamtech-sdks/blob/main/nodejs/sdk/LICENSE)
 [![node](https://img.shields.io/node/v/@streamtech/sdk.svg)](https://nodejs.org)
 
 Official Node.js / TypeScript client SDK for the **StreamTech** VOD infrastructure platform. Provides a simple, type-safe API for tenants to manage media assets, uploads, playback, storage, and playlists.
@@ -323,7 +323,7 @@ import type {
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/AvaPlus/streamtech-sdks.git
+   git clone https://github.com/mohamara/streamtech-sdks.git
    cd streamtech-sdks/nodejs/sdk
    ```
 

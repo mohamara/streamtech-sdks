@@ -50,7 +50,7 @@ Integrate the **StreamTech** VOD platform into WordPress. Upload, manage, and em
 
 ```bash
 cd wp-content/plugins/
-git clone https://github.com/AvaPlus/streamtech-sdks.git streamtech-sdks
+git clone https://github.com/mohamara/streamtech-sdks.git streamtech-sdks
 ln -s streamtech-sdks/wordpress/streamtech streamtech
 ```
 
@@ -204,7 +204,7 @@ streamtech/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/AvaPlus/streamtech-sdks.git
+   git clone https://github.com/mohamara/streamtech-sdks.git
    cd streamtech-sdks/wordpress/streamtech
    ```
 

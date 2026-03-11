@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       StreamTech Video Platform
- * Plugin URI:        https://github.com/AvaPlus/streamtech-sdks/tree/main/wordpress/streamtech
+ * Plugin URI:        https://github.com/mohamara/streamtech-sdks/tree/main/wordpress/streamtech
  * Description:       Integrate StreamTech VOD platform into WordPress. Upload, manage, and embed HLS/DASH video streams with shortcodes and Gutenberg blocks.
  * Version:           1.0.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            StreamTech
- * Author URI:        https://github.com/AvaPlus
+ * Author URI:        https://github.com/mohamara
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       streamtech

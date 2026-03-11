@@ -4,14 +4,14 @@
   "description": "Node.js client SDK for StreamTech VOD infrastructure — upload, transcode, and stream video with ease.",
   "author": "StreamTech",
   "license": "MIT",
-  "homepage": "https://github.com/AvaPlus/streamtech-sdks/tree/main/nodejs/sdk#readme",
+  "homepage": "https://github.com/mohamara/streamtech-sdks/tree/main/nodejs/sdk#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AvaPlus/streamtech-sdks.git",
+    "url": "git+https://github.com/mohamara/streamtech-sdks.git",
     "directory": "nodejs/sdk"
   },
   "bugs": {
-    "url": "https://github.com/AvaPlus/streamtech-sdks/issues"
+    "url": "https://github.com/mohamara/streamtech-sdks/issues"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
