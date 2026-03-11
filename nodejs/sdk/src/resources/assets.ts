@@ -36,6 +36,28 @@ export class AssetsResource {
   }
 
   /**
+   * Move an asset into a folder, or to root level.
+   *
+   * @param id - Asset UUID
+   * @param folderId - Target folder UUID (omit to move to root)
+   *
+   * @example
+   * await client.assets.move('asset-id', 'folder-id');
+   * await client.assets.move('asset-id'); // move to root
+   */
+  async move(
+    id: string,
+    folderId?: string,
+  ): Promise<{ ok: boolean }> {
+    const body: Record<string, string> = {};
+    if (folderId) body.folder_id = folderId;
+    return this.http.post<{ ok: boolean }>(
+      `/tenant/assets/${id}/move`,
+      body,
+    );
+  }
+
+  /**
    * Wait for an asset to finish transcoding.
    * Polls the asset status until it reaches 'ready' or 'failed'.
    *

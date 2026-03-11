@@ -30,6 +30,9 @@ export type {
   RestoreResult,
   Playlist,
   PlaylistWithPlayback,
+  Folder,
+  FolderListResult,
+  FolderListOptions,
   UploadProgressEvent,
   ProgressCallback,
 } from './types';

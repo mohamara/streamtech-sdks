@@ -5,6 +5,7 @@ import { PlaybackResource } from './resources/playback';
 import { BucketResource } from './resources/bucket';
 import { BackupResource } from './resources/backup';
 import { PlaylistsResource } from './resources/playlists';
+import { FoldersResource } from './resources/folders';
 import type { StreamTechConfig } from './types';
 
 /**
@@ -53,6 +54,9 @@ export class StreamTech {
   /** Manage playlists */
   public readonly playlists: PlaylistsResource;
 
+  /** Manage folders for organizing assets */
+  public readonly folders: FoldersResource;
+
   constructor(config: StreamTechConfig) {
     if (!config.baseUrl) throw new Error('baseUrl is required');
     if (!config.apiKey) throw new Error('apiKey is required');
@@ -64,5 +68,6 @@ export class StreamTech {
     this.bucket = new BucketResource(this.http);
     this.backup = new BackupResource(this.http);
     this.playlists = new PlaylistsResource(this.http);
+    this.folders = new FoldersResource(this.http);
   }
 }

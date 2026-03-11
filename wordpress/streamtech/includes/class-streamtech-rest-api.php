@@ -56,6 +56,50 @@ class StreamTech_REST_API {
 			'permission_callback' => [ $this, 'can_manage' ],
 		] );
 
+		/* ── Folders ── */
+		register_rest_route( self::NAMESPACE, '/folders', [
+			[
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'list_folders' ],
+				'permission_callback' => [ $this, 'can_manage' ],
+			],
+			[
+				'methods'             => 'POST',
+				'callback'            => [ $this, 'create_folder' ],
+				'permission_callback' => [ $this, 'can_manage' ],
+			],
+		] );
+
+		register_rest_route( self::NAMESPACE, '/folders/(?P<id>[a-zA-Z0-9\-]+)', [
+			[
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'get_folder' ],
+				'permission_callback' => [ $this, 'can_manage' ],
+			],
+			[
+				'methods'             => 'PUT',
+				'callback'            => [ $this, 'update_folder' ],
+				'permission_callback' => [ $this, 'can_manage' ],
+			],
+			[
+				'methods'             => 'DELETE',
+				'callback'            => [ $this, 'delete_folder' ],
+				'permission_callback' => [ $this, 'can_manage' ],
+			],
+		] );
+
+		register_rest_route( self::NAMESPACE, '/folders/(?P<id>[a-zA-Z0-9\-]+)/move', [
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'move_folder' ],
+			'permission_callback' => [ $this, 'can_manage' ],
+		] );
+
+		register_rest_route( self::NAMESPACE, '/assets/(?P<id>[a-zA-Z0-9\-]+)/move', [
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'move_asset' ],
+			'permission_callback' => [ $this, 'can_manage' ],
+		] );
+
 		/* ── Playlists ── */
 		register_rest_route( self::NAMESPACE, '/playlists', [
 			[
@@ -188,6 +232,78 @@ class StreamTech_REST_API {
 		] );
 
 		return new WP_REST_Response( $client->import_url( $url, $options ) );
+	}
+
+	/* ── Folders ── */
+
+	public function list_folders( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		$parent_id = $req->get_param( 'parent_id' ) ?: '';
+		$limit     = absint( $req->get_param( 'limit' ) ?: 50 );
+		$offset    = absint( $req->get_param( 'offset' ) ?: 0 );
+		return new WP_REST_Response( $client->list_folders( $parent_id, $limit, $offset ) );
+	}
+
+	public function get_folder( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		return new WP_REST_Response( $client->get_folder( $req['id'] ) );
+	}
+
+	public function create_folder( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		$name      = sanitize_text_field( $req->get_param( 'name' ) ?: '' );
+		$parent_id = $req->get_param( 'parent_id' ) ?: '';
+		if ( empty( $name ) ) {
+			return new WP_REST_Response( [ 'error' => true, 'message' => 'Name is required.' ], 400 );
+		}
+		return new WP_REST_Response( $client->create_folder( $name, $parent_id ) );
+	}
+
+	public function update_folder( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		$name = sanitize_text_field( $req->get_param( 'name' ) ?: '' );
+		if ( empty( $name ) ) {
+			return new WP_REST_Response( [ 'error' => true, 'message' => 'Name is required.' ], 400 );
+		}
+		return new WP_REST_Response( $client->update_folder( $req['id'], $name ) );
+	}
+
+	public function delete_folder( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		return new WP_REST_Response( $client->delete_folder( $req['id'] ) );
+	}
+
+	public function move_folder( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		$parent_id = $req->get_param( 'parent_id' ) ?: '';
+		return new WP_REST_Response( $client->move_folder( $req['id'], $parent_id ) );
+	}
+
+	public function move_asset( WP_REST_Request $req ): WP_REST_Response {
+		$client = $this->client();
+		if ( ! $client ) {
+			return $this->config_error();
+		}
+		$folder_id = $req->get_param( 'folder_id' ) ?: '';
+		return new WP_REST_Response( $client->move_asset( $req['id'], $folder_id ) );
 	}
 
 	/* ── Playlists ── */

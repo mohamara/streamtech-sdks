@@ -96,6 +96,52 @@ class StreamTech_Client {
 		return $this->get( '/tenant/backup/info' );
 	}
 
+	/* ───────── Folders ───────── */
+
+	public function list_folders( string $parent_id = '', int $limit = 50, int $offset = 0 ): array {
+		$params = compact( 'limit', 'offset' );
+		if ( $parent_id ) {
+			$params['parent_id'] = $parent_id;
+		}
+		return $this->get( '/tenant/folders', $params );
+	}
+
+	public function get_folder( string $id ): array {
+		return $this->get( "/tenant/folders/{$id}" );
+	}
+
+	public function create_folder( string $name, string $parent_id = '' ): array {
+		$body = [ 'name' => $name ];
+		if ( $parent_id ) {
+			$body['parent_id'] = $parent_id;
+		}
+		return $this->post( '/tenant/folders', $body );
+	}
+
+	public function update_folder( string $id, string $name ): array {
+		return $this->put( "/tenant/folders/{$id}", [ 'name' => $name ] );
+	}
+
+	public function delete_folder( string $id ): array {
+		return $this->delete( "/tenant/folders/{$id}" );
+	}
+
+	public function move_folder( string $id, string $parent_id = '' ): array {
+		$body = [];
+		if ( $parent_id ) {
+			$body['parent_id'] = $parent_id;
+		}
+		return $this->post( "/tenant/folders/{$id}/move", $body ?: (object) [] );
+	}
+
+	public function move_asset( string $id, string $folder_id = '' ): array {
+		$body = [];
+		if ( $folder_id ) {
+			$body['folder_id'] = $folder_id;
+		}
+		return $this->post( "/tenant/assets/{$id}/move", $body ?: (object) [] );
+	}
+
 	/* ───────── Playlists ───────── */
 
 	public function create_playlist( string $name, array $asset_ids = [] ): array {
@@ -145,6 +191,12 @@ class StreamTech_Client {
 
 	private function post( string $endpoint, $body = null ): array {
 		return $this->request( 'POST', $endpoint, $body ? wp_json_encode( $body ) : null, [
+			'Content-Type' => 'application/json',
+		] );
+	}
+
+	private function put( string $endpoint, $body = null ): array {
+		return $this->request( 'PUT', $endpoint, $body ? wp_json_encode( $body ) : null, [
 			'Content-Type' => 'application/json',
 		] );
 	}

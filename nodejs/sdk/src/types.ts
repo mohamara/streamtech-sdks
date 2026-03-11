@@ -172,6 +172,36 @@ export interface PlaylistWithPlayback extends Playlist {
   }>;
 }
 
+// ─── Folders ─────────────────────────────────────────────────────────────────
+
+export interface Folder {
+  id: string;
+  name: string;
+  parent_id: string | null;
+  created_at: string;
+}
+
+export interface FolderListResult {
+  folders: Folder[];
+  assets: Array<{
+    id: string;
+    title: string;
+    slug: string;
+    status: string;
+    original_filename: string | null;
+    duration_sec: number | null;
+    folder_id: string | null;
+    created_at: string;
+  }>;
+  asset_total: number;
+}
+
+export interface FolderListOptions {
+  parent_id?: string;
+  limit?: number;
+  offset?: number;
+}
+
 // ─── Errors ──────────────────────────────────────────────────────────────────
 
 export interface StreamTechErrorData {
